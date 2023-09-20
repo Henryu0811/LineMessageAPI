@@ -25,8 +25,8 @@ def linebot():
     body = request.get_data(as_text=True)                    # 取得收到的訊息內容
     try:
         json_data = json.loads(body)                         # json 格式化訊息內容
-        access_token = 'gdnhmbUovozyOzvdX1zxxWJTLBcFsijKXYI7nTe0pZHIPRpAY5EEvrNZkbGM/ubvykXhkba+s41g4RuPtUrx/to0YASQo5zr0VplwJBb00Eoi/Sebuj8g/AB7Y+Z+YeaCW4gyVEuo66xKnbGqQ5ZXwdB04t89/1O/w1cDnyilFU='
-        secret = '289f626e24c847c3abfeeeacf1ac7d0b'
+        access_token = 'your_token'
+        secret = 'your_secret'
         line_bot_api = LineBotApi(access_token)              # 確認 token 是否正確
         handler = WebhookHandler(secret)                     # 確認 secret 是否正確
         signature = request.headers['X-Line-Signature']      # 加入回傳的 headers
@@ -85,7 +85,7 @@ def save_to_txt(message, userId):
 
 
 def execute_stored_procedure():
-    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=127.0.0.1;DATABASE=dbDATABASE;UID=sa;PWD=db111022')
+    conn = pyodbc.connect('DRIVER={SQL Server};SERVER=127.0.0.1;DATABASE=your_database;UID=your_uid;PWD=your_pwd')
     cursor = conn.cursor()
     cursor.execute("{CALL SP_LineMessage}")
     cursor.commit()
